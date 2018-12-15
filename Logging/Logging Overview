@@ -1,0 +1,7 @@
+Severe - when something unexpected happens, and is not handled
+Warning - when something unexpected happens, but is handled
+Info - Holds gameplay path messages.
+Config - Holds fairly unimportant messages.
+Fine - Holds the swing messages
+Finer - Holds the Swing messages
+Finest - Holds the Swing messages
