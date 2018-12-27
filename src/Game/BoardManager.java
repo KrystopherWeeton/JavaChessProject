@@ -5,6 +5,8 @@ import Game.Pieces.*;
 
 import java.util.*;
 import java.awt.Point;
+import java.util.logging.*;
+
 import Func.Function;
 import Func.Tuple;
 
@@ -53,6 +55,8 @@ public class BoardManager {
 	private King lightKing;
 	private King darkKing;
 
+	private static final Logger logger = Logger.getLogger("BoardManager");
+
 
 	/*
 	----------------------------
@@ -69,6 +73,7 @@ public class BoardManager {
 	 */
 	private void generatePieces() {
 
+		logger.config("Entering generatePieces");
 
 		// Generate the pawns for both colors
 		int lightY = 1;
@@ -137,6 +142,7 @@ public class BoardManager {
 	@param x,y - the location for the piece to go
 	 */
 	private void setLocation(Piece p, int x, int y) {
+		logger.info("Setting location of " + p + " to (" + x + ", " + y + ")");
 		if (p != null) {
 			setPiece(null, p.getX(), p.getY());      // sets old location to null
 			p.setLocation(x, y);                        // sets the new location of the piece
@@ -169,6 +175,7 @@ public class BoardManager {
 	the danger of being changed
 	 */
 	public Piece[][] cloneBoard() {
+		logger.config("Entering cloneBoard");
 		return (Piece[][])board.clone();
 	}
 
@@ -219,6 +226,7 @@ public class BoardManager {
 	@return - a boolean representing whether or not the game is over
 	 */
 	public boolean performMove(Point from, Point to) {
+		logger.info("Entering performMove from " + from + " to " + to);
 		// determine validity and legality
 		if (!isValid(from) || !isValid(to))
 			throw new BoardIndexException("Attempt to perform move with one or more illegal" +
@@ -274,6 +282,7 @@ public class BoardManager {
 	@return - true if the move is a valid one and false if the move is not a valid one
 	 */
 	public boolean isValidMove(Point from, Point to) {
+		logger.info("Entering isValidMove from " + from + " to " + to);
 		// Need to check (a) within valid lines, (b) is not going on top of a piece of the same color,
 		// (c) nothing is blocking it (excluding knight movement) along with special considerations
 		// pawns, castling, etc.

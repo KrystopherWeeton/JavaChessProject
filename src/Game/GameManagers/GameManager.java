@@ -33,7 +33,7 @@ public abstract class GameManager extends JFrame implements GameListener {
 	// this is the default size of the board
 	final private static Dimension DEFAULT_SIZE = new Dimension(900, 750);
 
-	final private static Logger logger = Logger.getLogger("Logger");
+	final private static Logger logger = Logger.getLogger("GameManager");
 
 	/*
 	-------------------------------
@@ -81,7 +81,7 @@ public abstract class GameManager extends JFrame implements GameListener {
 	/*
 	Made to allow for base functionality when redrawing the board, before the abstract method is called
 	 */
-	private void handleBoardUpdate() {
+	protected void handleBoardUpdate() {
 		redrawBoard();
 	}
 
@@ -116,16 +116,12 @@ public abstract class GameManager extends JFrame implements GameListener {
 				return false;
 			}
 
+			// performs the move on the board
 			boolean gameOver = boardManager.performMove(from, to);
 
 			// if we get here, then the move is definitely valid and the board (and ui) has been updated
 			if (gameOver) {
-				logger.info("Game over has been detected.");
-				// handle starting a new game here
-				handleBoardUpdate();
-				String result = (whitesTurn ? "White" : "Black") + " has won the game! Returning to the main menu.";
-				GUIFunctionality.sendWarning(result, this);
-				this.dispose();
+				handleGameOver();
 			} else {	// switch turns and redraw the board
 				whitesTurn = !whitesTurn;
 				handleBoardUpdate();
@@ -134,8 +130,10 @@ public abstract class GameManager extends JFrame implements GameListener {
 			// reset the message on the displayLabel
 			gameGuiManager.setMoveResponse("");
 			return true;
+
 		} catch (BoardIndexException e) {	// this type of exception should not be occuring
 			e.printStackTrace();
+			logger.warning("Detected BoardIndexException in GameManager interpretMove method.");
 		} catch (InvalidMoveException e) {
 			gameGuiManager.setMoveResponse("That move is invalid. Try another.");
 			logger.config("Invalid move entered.");
@@ -145,7 +143,22 @@ public abstract class GameManager extends JFrame implements GameListener {
 			logger.config("Illegal move entered.");
 			return false;
 		}
+		logger.warning("Hit end of interpretMove method.");
 		return false;	// should never hit this point
+	}
+
+	/*
+	What to do in the event of a game over. This can be overwritten in derived classes to allow for custom functionality;
+	however, a default behaviour is specified which tells the user that the game is over and then returns to the main
+	menu.
+	 */
+	protected void handleGameOver() {
+		logger.info("Game over has been detected.");
+		// handle starting a new game here
+		handleBoardUpdate();
+		String result = (whitesTurn ? "White" : "Black") + " has won the game! Returning to the main menu.";
+		GUIFunctionality.sendWarning(result, this);
+		this.dispose();
 	}
 
 	/*

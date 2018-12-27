@@ -2,6 +2,8 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.*;
+
 import Func.Location;
 import Game.Pieces.Piece;
 
@@ -20,15 +22,23 @@ public class GameGuiManager extends JPanel{
 	// Handles displaying the board, as well as gathering user input from the board
 	private BoardGuiManager boardGuiManager;
 
+	// Displays the response to the most recent move in the game
 	private JLabel moveResponse = new JLabel("moveResponse");
 
 	// Labels to display the point totals in the game
 	private JLabel lowerPoints = new JLabel("lowerPoints", JLabel.CENTER);
 	private JLabel upperPoints = new JLabel("upperPoints", JLabel.CENTER);
 
-	// our spring layout
+	// Buttons for game iteration
+	private JButton stepForward = new JButton("Step");
+	private JButton stepBackwards = new JButton("Back");
+	private JButton beginning = new JButton("Beginning");
+	private JButton end = new JButton("Current Board");
+
+	// Spring layout to handle UI
 	private SpringLayout layout = new SpringLayout();
 
+	// Constants for ease of use
 	final private static String WEST = SpringLayout.WEST;
 	final private static String EAST = SpringLayout.EAST;
 	final private static String NORTH = SpringLayout.NORTH;
@@ -36,6 +46,9 @@ public class GameGuiManager extends JPanel{
 
 	// Static constants
 	final private static Dimension DEFAULT_SIZE = new Dimension(900, 900);
+
+	// Logger for logging
+	final private static Logger logger = Logger.getLogger("GameGuiManager");
 
 	/*
 	----------------------------
@@ -58,6 +71,10 @@ public class GameGuiManager extends JPanel{
 		this.add(moveResponse);
 		this.add(lowerPoints);
 		this.add(upperPoints);
+		this.add(stepForward);
+		this.add(stepBackwards);
+		this.add(beginning);
+		this.add(end);
 
 		// set constraints of components
 
@@ -77,10 +94,28 @@ public class GameGuiManager extends JPanel{
 		layout.putConstraint(SOUTH, lowerPoints, -10, SOUTH, boardGuiManager);
 		layout.putConstraint(WEST, lowerPoints, 5, EAST, boardGuiManager);
 
+		// put the top of the buttons into position
+		layout.putConstraint(NORTH, beginning, 10, NORTH, this);
+		layout.putConstraint(WEST, beginning, 30, EAST, boardGuiManager);
+
+		// put the step buttons into position
+		layout.putConstraint(NORTH, stepForward, 5, SOUTH, beginning);
+		layout.putConstraint(WEST, stepForward, 0, WEST, beginning);
+		layout.putConstraint(NORTH, stepBackwards, 5, SOUTH, beginning);
+		layout.putConstraint(WEST, stepBackwards, 0, EAST, stepForward);
+
+		// put the end button into place
+		layout.putConstraint(NORTH, end, 5, SOUTH, stepForward);
+		layout.putConstraint(WEST, end, 0, WEST, beginning);
+
 		// set everything to visible
 		lowerPoints.setVisible(true);
 		upperPoints.setVisible(true);
 		moveResponse.setVisible(true);
+		stepForward.setVisible(true);
+		stepBackwards.setVisible(true);
+		beginning.setVisible(true);
+		end.setVisible(true);
 		this.setVisible(true);
 
 	}
@@ -140,6 +175,7 @@ public class GameGuiManager extends JPanel{
 	@param whitesTurn - true if it is whites turn, false otherwise.
 	 */
 	public void redrawBoard(Piece[][] pieces, boolean whitesTurn, int lightPoints, int darkPoints) {
+		logger.config("Entering redrawBoard in GameGuiManager");
 		boardGuiManager.redrawBoard(pieces, whitesTurn);
 		if (whitesTurn) {
 			setPoints(darkPoints, lightPoints);

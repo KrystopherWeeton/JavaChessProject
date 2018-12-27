@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.logging.*;
 
 // Uses all classes in func
 import Func.*;
@@ -15,10 +16,13 @@ public class MenuFrame extends HidingJFrame{
 
 	private JButton play;				// the play button
 	private JButton load_game;			// the button to load a game
+	private JButton stress_test;		// the button to stress test the AI with a number of randomly played games.
 
 	final private static Dimension DEFAULT_DIMENSION = new Dimension(200, 300);
 	final private static Point DEFAULT_LOCATION = GUIFunctionality.getLocationToCenter(DEFAULT_DIMENSION);
 	final private static Dimension DEFAULT_BUTTON_SIZE = new Dimension(100, 50);
+
+	final private static Logger logger = Logger.getLogger("Logger");
 
 	/*
 	Constructs the menu frame and all sub-items
@@ -27,6 +31,9 @@ public class MenuFrame extends HidingJFrame{
 
 		// creates self and sets layout
 		super("Chess Game");
+		logger.config("Creating new MenuFrame");
+
+		// initializes traits for JPanel
 		this.setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		this.setSize(MenuFrame.DEFAULT_DIMENSION);
 		this.setLocation(DEFAULT_LOCATION);
@@ -54,16 +61,66 @@ public class MenuFrame extends HidingJFrame{
 		load_game.setAlignmentX(JButton.CENTER);
 		this.add(load_game);
 
+		stress_test = GUIFunctionality.makeButton("Test", DEFAULT_BUTTON_SIZE, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				runStressTests(e);
+			}
+		});
+		stress_test.setAlignmentX(JButton.CENTER);
+		this.add(stress_test);
+
 
 		// sets this as visible and displays to user
 		this.setVisible(true);
+	}
+
+	private void runStressTests(ActionEvent e) {
+		logger.config("Entering stress_test from the main menu.");
+
+		// Gets user input for the number of tests to run
+		String numTests = JOptionPane.showInputDialog("Enter the number of tests");
+
+		while (numTests == null || Integer.valueOf(numTests) == null) {
+			numTests = JOptionPane.showInputDialog("The input had no numbers, please input the number of test to run.");
+		}
+		Integer tests = Integer.valueOf(numTests);
+
+		// Iterate through each test
+		for (int i = 0; i < tests; i++) {
+			doStressTest();
+		}
+
+		// Displays information from the tests to the user
+	}
+
+	private void doStressTest() {
+
+		// initializes the game manager to begin playing
+		GameManager gm = new GameTesterNoPlayer();
+		gm.addWindowListener(this);
+		gm.setVisible(true);
+
+		// while loop which repeatedly runs the game while the game is active
+		int moves = 0;
+		while (gm.isDisplayable()) {
+			moves++;
+			gm.actionPerformed("");
+			gm.redrawBoard();
+			gm.repaint();
+			try {
+				//Thread.sleep(100);
+			} catch (Exception e) {
+
+			}
+		}
 	}
 
 	/*
 	Starts the game of chess. Is called when the play button is pressed
 	 */
 	private void handle_play(ActionEvent e) {
-
+		logger.config("Entering handle_play");
 		String[] options = {"0", "1", "2"};
 		int players = JOptionPane.showOptionDialog(this,
 				"How many human players in your game?",
@@ -74,6 +131,7 @@ public class MenuFrame extends HidingJFrame{
 				options,
 				options[0] );
 
+
 		GameManager gm = null;
 		switch (players) {
 			case 0: gm = new GameManagerNoPlayer();
@@ -81,6 +139,9 @@ public class MenuFrame extends HidingJFrame{
 			case 1: gm = new GameManagerOnePlayer();
 					break;
 			case 2: gm = new GameManagerTwoPlayer();
+					break;
+			default:
+				return;
 		}
 
 		gm.addWindowListener(this);			// sets main menu to hide until game is over
@@ -101,7 +162,7 @@ public class MenuFrame extends HidingJFrame{
 	Starts the process of loading a game. Is called when the load game button is pressed
 	 */
 	private void handle_load(ActionEvent e) {
-
+		logger.config("Entering handle_load");
 		JOptionPane.showMessageDialog(this,
 				"This feature has not been implemented yet.");
 	}

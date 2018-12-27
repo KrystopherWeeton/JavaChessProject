@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.swing.ImageIcon;
 import java.awt.Point;
-
+import java.util.logging.*;
 
 
 /*
@@ -27,6 +27,8 @@ public abstract class Piece {
 	final private static String[] SPRITE_ORDER = {"King", "Queen", "Rook", "Knight", "Bishop", "Pawn"};
 	final private static String SPRITE_PATH = "PieceImages/Pieces.png";
 	final private static int SPRITE_LENGTH = 64;	// in pixels
+
+	final private static Logger logger = Logger.getLogger("Logger");
 
 	/*
 	Non-static variables
@@ -113,6 +115,7 @@ public abstract class Piece {
 	Loads the sprites for all the pieces and puts them into the sprites map
 	 */
 	private static void loadSprites() {
+			logger.config("Entered loadSprites");
 			try {
 
 				// Read the sprite file
@@ -136,5 +139,10 @@ public abstract class Piece {
 	private static ImageIcon readSprite(BufferedImage bi, int x, int y) {
 		return new ImageIcon(bi.getSubimage(x * Piece.SPRITE_LENGTH,
 				y * Piece.SPRITE_LENGTH, Piece.SPRITE_LENGTH, Piece.SPRITE_LENGTH));
+	}
+
+	@Override
+	public String toString() {
+		return Character.toString(iden());
 	}
 }

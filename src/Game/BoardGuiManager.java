@@ -5,6 +5,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import Game.Pieces.Piece;
+import java.util.logging.*;
 
 /*
 A class which actually handles display, user input, etc.
@@ -29,9 +30,12 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 
 	private boolean lightDisplayed = true;
 
+	final private static Logger logger = Logger.getLogger("BoardGuiManager");
+
 
 	public BoardGuiManager(GameListener inputListener) {
 		super(new GridLayout(9, 9));
+		logger.config("Creating boardGuiManager");
 		 this.setBorder(new LineBorder(Color.black));
 		this.inputListener = inputListener;
 
@@ -56,6 +60,7 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	}
 
 	public void redrawBoard(Piece[][] board, boolean whitesTurn) {
+		logger.config("Entering redrawBoard");
 		this.setVisible(false);
 		if (whitesTurn) {
 			redrawWhite(board);
@@ -111,6 +116,7 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	missing if you don't.
 	 */
 	private void generateUI() {
+		logger.config("Entering generateUI");
 		int squareLength = this.getWidth() / 8;
 		Dimension squareSize = new Dimension(squareLength, squareLength);
 
@@ -158,6 +164,7 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	}
 
 	public boolean selectSquare(Point p) {
+		logger.config("Selecting " + p);
 		if (!BoardManager.isValid(p))
 			return false;
 		board[p.x][p.y].setBackground(SELECTED_COLOR);
@@ -165,6 +172,7 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	}
 
 	public boolean deselectSquare(Point p) {
+		logger.config("Deselecting " + p);
 		if (!BoardManager.isValid(p))
 			return false;
 		board[p.x][p.y].setBackground(findColor(p.x, p.y));
