@@ -82,9 +82,11 @@ public class MenuFrame extends HidingJFrame{
 		logger.config("Entering stress_test from the main menu.");
 
 		// Gets user input for the number of tests to run
-		String numTests = JOptionPane.showInputDialog("Enter the number of tests");
+		String numTests = JOptionPane.showInputDialog(this, "Enter the number of tests");
 
-		while (numTests == null || Integer.valueOf(numTests) == null) {
+		if (numTests == null) return;			// cancel was hit
+
+		while (numTests.length() ==0 || !MiscFunc.isInteger(numTests) || Integer.valueOf(numTests) == null) {
 			numTests = JOptionPane.showInputDialog("The input had no numbers, please input the number of test to run.");
 		}
 		Integer tests = Integer.valueOf(numTests);
