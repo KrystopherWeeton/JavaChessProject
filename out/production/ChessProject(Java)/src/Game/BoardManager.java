@@ -292,7 +292,6 @@ public class BoardManager {
 		if (p == null || !p.isValidMove(from, to))		// checks for degenerate case and that move lines up
 			return false;
 
-		logger.info("Reached real check with " + p.toString() + " taking " + taken);
 
 		// (b) not going to end up on top of a piece of the same color
 		if (taken != null && taken.colorMatches(p))
@@ -390,13 +389,14 @@ public class BoardManager {
 	@return - true if the move is an enPassant, false otherwise
 	 */
 	private boolean isEnPassant(Point from, Point to) {
-		if (at(from) == null || at(from).iden() != 'P')
+		if (at(from) == null || at(from).iden() != 'P')		// degenerate case of not a pawn
 			return false;
 
-		if (isValid(prevMoveDoublePawn) && prevMoveDoublePawn.x == to.x
-				&& Math.abs(prevMoveDoublePawn.y - to.y) == 1) {
+		if (isValid(prevMoveDoublePawn) && prevMoveDoublePawn.x == to.x		// if the prev move was
+				&& Math.abs(prevMoveDoublePawn.y - to.y) == 1) {			// a double pawn and loc. match
 			// we have an en-passant
 			return ( at(prevMoveDoublePawn) != null && at(prevMoveDoublePawn).iden() == 'P');
+			// might be able to replace this with return true; however, doesn't hurt to check.
 		}
 		return false;
 	}
@@ -419,27 +419,10 @@ public class BoardManager {
 			}
 		}
 
-		// determines if the king is currently in check (if not, game not over)
-
 		return true;
 
 	}
 
-	/*
-	Determines if the given move leaves the king in check
-	@param from - the origin for the move
-	@param to - the location to move to
-	@return - true of the move would put / leave the king in check, false if it would not
-	 */
-	public boolean putsKingInCheck(Point from, Point to, PieceColor color) {
-		Function isKingInCheck = new Function() {
-			@Override
-			public boolean run(int x, int y) {
-				return kingInCheck(color);
-			}
-		};
-		return testMove(from, to, isKingInCheck);
-	}
 
 	/*
 	Checks whether the king can make the move specified
@@ -448,9 +431,20 @@ public class BoardManager {
 	@return - a boolean which is true if the king can take the given position and false if the king
 	cant take the given position
 	 */
-	public boolean kingCanTake(Point origLocation, Point location) {
-		if (at(origLocation) == null) return false;
-		return !putsKingInCheck(origLocation, location, at(origLocation).getColor());
+	public boolean kingCanTake(Point orig, Point location) {
+		if (at(orig) == null || at(orig).iden() != 'K') return false;	// check degenerate case
+		Function isKingInCheck = new Function() {
+			@Override
+			public boolean run(int x, int y) {
+				return canBeTaken(at(orig));
+			}
+		};
+		if( testMove(orig, location, isKingInCheck)) {
+			return false;
+		}
+
+		// Check if we are moving next to another king
+		return true;
 	}
 
 	/*
@@ -460,7 +454,6 @@ public class BoardManager {
 	 */
 	public boolean kingInCheck(PieceColor color) {
 		Point p = findKing(color);
-		logger.info("King location is " + findKing(color));
 		return canBeTaken(p);
 	}
 
@@ -683,8 +676,8 @@ public class BoardManager {
 
 		boolean result = func.run(location.x, location.y);
 
-		setLocation(taken, location.x, location.y);
 		setLocation(atOrig, origLocation.x, origLocation.y);
+		setLocation(taken, location.x, location.y);
 
 		return result;
 	}
@@ -919,7 +912,7 @@ public class BoardManager {
 		Point p2 = null;
 		for (int x = -1; x <= 1; x++) {
 			for (int y = -1; y <= 1; y++) {
-				if (x == y || !isValid(p))
+				if ((x == y && x == 0) || !isValid(p))
 					continue;
 
 				p2 = new Point(p.x + x, p.y + y);

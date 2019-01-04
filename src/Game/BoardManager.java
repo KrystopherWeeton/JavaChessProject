@@ -292,7 +292,6 @@ public class BoardManager {
 		if (p == null || !p.isValidMove(from, to))		// checks for degenerate case and that move lines up
 			return false;
 
-		logger.info("Reached real check with " + p.toString() + " taking " + taken);
 
 		// (b) not going to end up on top of a piece of the same color
 		if (taken != null && taken.colorMatches(p))
@@ -420,8 +419,6 @@ public class BoardManager {
 			}
 		}
 
-		// determines if the king is currently in check (if not, game not over)
-
 		return true;
 
 	}
@@ -442,7 +439,12 @@ public class BoardManager {
 				return canBeTaken(at(orig));
 			}
 		};
-		return testMove(orig, location, isKingInCheck);
+		if( testMove(orig, location, isKingInCheck)) {
+			return false;
+		}
+
+		// Check if we are moving next to another king
+		return true;
 	}
 
 	/*
@@ -452,7 +454,6 @@ public class BoardManager {
 	 */
 	public boolean kingInCheck(PieceColor color) {
 		Point p = findKing(color);
-		logger.info("King location is " + findKing(color));
 		return canBeTaken(p);
 	}
 
@@ -675,8 +676,8 @@ public class BoardManager {
 
 		boolean result = func.run(location.x, location.y);
 
-		setLocation(taken, location.x, location.y);
 		setLocation(atOrig, origLocation.x, origLocation.y);
+		setLocation(taken, location.x, location.y);
 
 		return result;
 	}
@@ -911,7 +912,7 @@ public class BoardManager {
 		Point p2 = null;
 		for (int x = -1; x <= 1; x++) {
 			for (int y = -1; y <= 1; y++) {
-				if (x == y || !isValid(p))
+				if ((x == y && x == 0) || !isValid(p))
 					continue;
 
 				p2 = new Point(p.x + x, p.y + y);
