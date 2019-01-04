@@ -142,7 +142,6 @@ public class BoardManager {
 	@param x,y - the location for the piece to go
 	 */
 	private void setLocation(Piece p, int x, int y) {
-		logger.info("Setting location of " + p + " to (" + x + ", " + y + ")");
 		if (p != null) {
 			setPiece(null, p.getX(), p.getY());      // sets old location to null
 			p.setLocation(x, y);                        // sets the new location of the piece
@@ -293,6 +292,8 @@ public class BoardManager {
 		if (p == null || !p.isValidMove(from, to))		// checks for degenerate case and that move lines up
 			return false;
 
+		logger.info("Reached real check with " + p.toString() + " taking " + taken);
+
 		// (b) not going to end up on top of a piece of the same color
 		if (taken != null && taken.colorMatches(p))
 			return false;
@@ -315,6 +316,8 @@ public class BoardManager {
 
 		switch (p.iden()) {		// to determine whether or not the move is valid given specific considerations
 			case 'K':	// must check whether it puts the king in check
+				boolean ret = kingCanTake(from, to);
+				logger.info("Checking if king can move, and returning " + ret);
 				return kingCanTake(from, to);
 			case 'Q':	// check diagonals and lines
 				isLegal = false;
@@ -387,13 +390,14 @@ public class BoardManager {
 	@return - true if the move is an enPassant, false otherwise
 	 */
 	private boolean isEnPassant(Point from, Point to) {
-		if (at(from) == null || at(from).iden() != 'P')
+		if (at(from) == null || at(from).iden() != 'P')		// degenerate case of not a pawn
 			return false;
 
-		if (isValid(prevMoveDoublePawn) && prevMoveDoublePawn.x == to.x
-				&& Math.abs(prevMoveDoublePawn.y - to.y) == 1) {
+		if (isValid(prevMoveDoublePawn) && prevMoveDoublePawn.x == to.x		// if the prev move was
+				&& Math.abs(prevMoveDoublePawn.y - to.y) == 1) {			// a double pawn and loc. match
 			// we have an en-passant
 			return ( at(prevMoveDoublePawn) != null && at(prevMoveDoublePawn).iden() == 'P');
+			// might be able to replace this with return true; however, doesn't hurt to check.
 		}
 		return false;
 	}
@@ -407,6 +411,7 @@ public class BoardManager {
 		PieceColor moveColor = (moved == PieceColor.dark) ? (PieceColor.light) : PieceColor.dark;
 
 		ArrayList<Tuple<Point, Point>> moves = findAllMoves(moveColor);
+		logger.config("Checking isGameOver with moves, " + moves);
 
 		for (Tuple<Point, Point> t : moves) {
 			if ( at(t.x) != null && at(t.x).colorMatches(moveColor) &&
@@ -421,21 +426,6 @@ public class BoardManager {
 
 	}
 
-	/*
-	Determines if the given move leaves the king in check
-	@param from - the origin for the move
-	@param to - the location to move to
-	@return - true of the move would put / leave the king in check, false if it would not
-	 */
-	public boolean putsKingInCheck(Point from, Point to, PieceColor color) {
-		Function isKingInCheck = new Function() {
-			@Override
-			public boolean run(int x, int y) {
-				return kingInCheck(color);
-			}
-		};
-		return testMove(from, to, isKingInCheck);
-	}
 
 	/*
 	Checks whether the king can make the move specified
@@ -444,9 +434,15 @@ public class BoardManager {
 	@return - a boolean which is true if the king can take the given position and false if the king
 	cant take the given position
 	 */
-	public boolean kingCanTake(Point origLocation, Point location) {
-		if (at(origLocation) == null) return false;
-		return !putsKingInCheck(origLocation, location, at(origLocation).getColor());
+	public boolean kingCanTake(Point orig, Point location) {
+		if (at(orig) == null || at(orig).iden() != 'K') return false;	// check degenerate case
+		Function isKingInCheck = new Function() {
+			@Override
+			public boolean run(int x, int y) {
+				return canBeTaken(at(orig));
+			}
+		};
+		return testMove(orig, location, isKingInCheck);
 	}
 
 	/*
@@ -456,6 +452,7 @@ public class BoardManager {
 	 */
 	public boolean kingInCheck(PieceColor color) {
 		Point p = findKing(color);
+		logger.info("King location is " + findKing(color));
 		return canBeTaken(p);
 	}
 
@@ -551,10 +548,10 @@ public class BoardManager {
 		Point p4 = new Point(location.x + 1, location.y + yModifier);
 		Point p5 = new Point(location.x - 1, location.y + yModifier);
 
-		if (isValid(p4) && !pawn.colorMatches(at(p4))){
+		if (isValid(p4) && at(p4) != null && !pawn.colorMatches(at(p4))){
 			list.add(new Tuple(location, p4));
 		}
-		if (isValid(p5) && !pawn.colorMatches(at(p5))) {
+		if (isValid(p5) && at(p5) != null && !pawn.colorMatches(at(p5))) {
 			list.add(new Tuple(location, p5));
 		}
 
@@ -678,8 +675,8 @@ public class BoardManager {
 
 		boolean result = func.run(location.x, location.y);
 
-		setLocation(atOrig, origLocation.x, origLocation.y);
 		setLocation(taken, location.x, location.y);
+		setLocation(atOrig, origLocation.x, origLocation.y);
 
 		return result;
 	}
