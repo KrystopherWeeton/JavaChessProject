@@ -89,7 +89,7 @@ public class MenuFrame extends HidingJFrame{
 		while (numTests.length() ==0 || !MiscFunc.isInteger(numTests) || Integer.valueOf(numTests) == null) {
 			numTests = JOptionPane.showInputDialog("The input had no numbers, please input the number of test to run.");
 		}
-		Integer tests = Integer.valueOf(numTests);
+		Integer tests =	 Integer.valueOf(numTests);
 
 		StressTestResults results;
 		int totalMoves = 0;
