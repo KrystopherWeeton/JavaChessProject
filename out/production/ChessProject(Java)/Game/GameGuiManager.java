@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.logging.*;
 
-import Func.Location;
+import Func.*;
 import Game.Pieces.Piece;
 
 /*
@@ -49,6 +49,8 @@ public class GameGuiManager extends JPanel{
 
 	// Logger for logging
 	final private static Logger logger = Logger.getLogger("GameGuiManager");
+
+	final private static boolean LOGGING = Consts.LOGGING;
 
 	/*
 	----------------------------
@@ -175,7 +177,8 @@ public class GameGuiManager extends JPanel{
 	@param whitesTurn - true if it is whites turn, false otherwise.
 	 */
 	public void redrawBoard(Piece[][] pieces, boolean whitesTurn, int lightPoints, int darkPoints) {
-		logger.config("Entering redrawBoard in GameGuiManager");
+		if (LOGGING)
+			logger.config("Entering redrawBoard in GameGuiManager");
 		boardGuiManager.redrawBoard(pieces, whitesTurn);
 		if (whitesTurn) {
 			setPoints(darkPoints, lightPoints);

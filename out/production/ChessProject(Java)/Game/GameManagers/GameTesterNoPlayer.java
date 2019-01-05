@@ -14,11 +14,9 @@ public class GameTesterNoPlayer extends GameManagerNoPlayer {
 		this.displayFinalResults = displayFinalResults;
 	}
 
-	final private static Logger logger = Logger.getLogger("GameManager");
 
 	@Override
 	protected void handleGameOver() {
-		logger.config("Entering handleGameOver in GameTesterNoPlayer");
 
 		if (displayFinalResults) {
 			handleBoardUpdate();

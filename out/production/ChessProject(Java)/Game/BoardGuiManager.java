@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
+
+import Func.*;
 import Game.Pieces.Piece;
 import java.util.logging.*;
 
@@ -32,10 +34,13 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 
 	final private static Logger logger = Logger.getLogger("BoardGuiManager");
 
+	final private static boolean LOGGING = Consts.LOGGING;
+
 
 	public BoardGuiManager(GameListener inputListener) {
 		super(new GridLayout(9, 9));
-		logger.config("Creating boardGuiManager");
+		if (LOGGING)
+			logger.config("Creating boardGuiManager");
 		 this.setBorder(new LineBorder(Color.black));
 		this.inputListener = inputListener;
 
@@ -60,7 +65,8 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	}
 
 	public void redrawBoard(Piece[][] board, boolean whitesTurn) {
-		logger.config("Entering redrawBoard");
+		if (LOGGING)
+			logger.config("Entering redrawBoard");
 		this.setVisible(false);
 		if (whitesTurn) {
 			redrawWhite(board);
@@ -116,7 +122,8 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	missing if you don't.
 	 */
 	private void generateUI() {
-		logger.config("Entering generateUI");
+		if (LOGGING)
+			logger.config("Entering generateUI");
 		int squareLength = this.getWidth() / 8;
 		Dimension squareSize = new Dimension(squareLength, squareLength);
 

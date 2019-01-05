@@ -2,6 +2,7 @@ package Game;
 
 import Game.Exceptions.*;
 import Game.Pieces.*;
+import Func.Consts;
 
 import java.util.*;
 import java.awt.Point;
@@ -56,7 +57,7 @@ public class BoardManager {
 	private King darkKing;
 
 	private static final Logger logger = Logger.getLogger("BoardManager");
-
+	private static final boolean LOGGING = Consts.LOGGING;
 
 	/*
 	----------------------------
@@ -73,7 +74,8 @@ public class BoardManager {
 	 */
 	private void generatePieces() {
 
-		logger.config("Entering generatePieces");
+		if (LOGGING)
+			logger.config("Entering generatePieces");
 
 		// Generate the pawns for both colors
 		int lightY = 1;
@@ -112,6 +114,17 @@ public class BoardManager {
 	Basic Access Functionality
 	----------------------------
 	 */
+
+	public String getPieceList(PieceColor color) {
+		StringBuilder sb = new StringBuilder();
+		for (int x = 0; x < 8; x++) {
+			for (int y = 0; y < 8; y++) {
+				if (at(x, y) != null)
+					sb.append(" " + at(x, y).iden());
+			}
+		}
+		return sb.toString();
+	}
 
 	// Accessor for lightPoints
 	public int getLightPoints() {
@@ -174,7 +187,8 @@ public class BoardManager {
 	the danger of being changed
 	 */
 	public Piece[][] cloneBoard() {
-		logger.config("Entering cloneBoard");
+		if (LOGGING)
+			logger.config("Entering cloneBoard");
 		return (Piece[][])board.clone();
 	}
 
@@ -225,7 +239,8 @@ public class BoardManager {
 	@return - a boolean representing whether or not the game is over
 	 */
 	public boolean performMove(Point from, Point to) {
-		logger.info("Entering performMove from " + from + " to " + to);
+		if (LOGGING)
+			logger.info("Entering performMove from " + from + " to " + to);
 		// determine validity and legality
 		if (!isValid(from) || !isValid(to))
 			throw new BoardIndexException("Attempt to perform move with one or more illegal" +
@@ -239,13 +254,6 @@ public class BoardManager {
 		// determine the two pieces that are being dealt with
 		Piece movingPiece = at(from);
 		Piece deadPiece = at(to);
-
-		if (deadPiece != null && deadPiece.iden() == 'K') {
-			System.out.println("DEAD PIECE IS A KING");
-
-			isValidMove(from, to);
-			isLegalMove(from, to);
-		}
 
 		// clean the corpse for the dead one
 		if (deadPiece != null) {
@@ -275,6 +283,10 @@ public class BoardManager {
 				darkPoints++;
 			setLocation(null, to.x, (movingPiece.colorMatches(PieceColor.light) ? (to.y - 1) : (to.y + 1) ));
 		}
+		if (LOGGING) {
+			logger.config("Light: " + getPieceList(PieceColor.light));
+			logger.config("Dark: " + getPieceList(PieceColor.dark));
+		}
 
 		// checks if the game is over
 		return isGameOver(movingPiece.getColor());
@@ -288,7 +300,6 @@ public class BoardManager {
 	@return - true if the move is a valid one and false if the move is not a valid one
 	 */
 	public boolean isValidMove(Point from, Point to) {
-		logger.info("Entering isValidMove from " + from + " to " + to);
 		// Need to check (a) within valid lines, (b) is not going on top of a piece of the same color,
 		// (c) nothing is blocking it (excluding knight movement) along with special considerations
 		// pawns, castling, etc.
@@ -416,7 +427,8 @@ public class BoardManager {
 		PieceColor moveColor = (moved == PieceColor.dark) ? (PieceColor.light) : PieceColor.dark;
 
 		ArrayList<Tuple<Point, Point>> moves = findAllMoves(moveColor);
-		logger.config("Checking isGameOver with moves, " + moves);
+		if (LOGGING)
+			logger.config("Checking isGameOver with moves, " + moves);
 
 		for (Tuple<Point, Point> t : moves) {
 			if ( at(t.x) != null && at(t.x).colorMatches(moveColor) &&
@@ -800,7 +812,13 @@ public class BoardManager {
 	 */
 	public boolean inInfiniteGame() {
 		// test for only kings left
-		return false;
+
+		for (int x = 0; x < 8; x++)
+			for (int y = 0; y < 8; y++)
+				if (at(x, y) != null && at(x, y).iden() != 'K')
+					return false;
+
+		return true;
 	}
 
 	/*

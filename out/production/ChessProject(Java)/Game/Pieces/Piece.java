@@ -1,5 +1,7 @@
 package Game.Pieces;
 
+import Func.*;
+
 import javax.imageio.*;
 import java.awt.*;
 import java.net.*;
@@ -29,6 +31,7 @@ public abstract class Piece {
 	final private static int SPRITE_LENGTH = 64;	// in pixels
 
 	final private static Logger logger = Logger.getLogger("Logger");
+	final private static boolean LOGGING = Consts.LOGGING;
 
 	/*
 	Non-static variables
@@ -115,25 +118,24 @@ public abstract class Piece {
 	Loads the sprites for all the pieces and puts them into the sprites map
 	 */
 	private static void loadSprites() {
+		if (LOGGING)
 			logger.config("Entered loadSprites");
-			try {
+		try {
+			// Read the sprite file
+			File file = new File(SPRITE_PATH);
+			BufferedImage bi = ImageIO.read(file);
 
-				// Read the sprite file
-				File file = new File(SPRITE_PATH);
-				BufferedImage bi = ImageIO.read(file);
-
-				// Take out the individual sprites
-				for (int y = 0; y < 2; y++) {
-					String color = (y == 0) ? PieceColor.dark.string() : PieceColor.light.string();
-					for (int x = 0; x < 6; x++) {    // First dark pieces and then light
-						sprites.put(color + SPRITE_ORDER[x], readSprite(bi, x, y));
-					}
+			// Take out the individual sprites
+			for (int y = 0; y < 2; y++) {
+				String color = (y == 0) ? PieceColor.dark.string() : PieceColor.light.string();
+				for (int x = 0; x < 6; x++) {    // First dark pieces and then light
+					sprites.put(color + SPRITE_ORDER[x], readSprite(bi, x, y));
 				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.exit(1);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 	private static ImageIcon readSprite(BufferedImage bi, int x, int y) {

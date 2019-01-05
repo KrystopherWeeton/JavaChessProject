@@ -35,6 +35,8 @@ public abstract class GameManager extends JFrame implements GameListener {
 
 	final private static Logger logger = Logger.getLogger("GameManager");
 
+	final private static boolean LOGGING = Consts.LOGGING;
+
 	/*
 	-------------------------------
 	Constructors
@@ -51,7 +53,8 @@ public abstract class GameManager extends JFrame implements GameListener {
 		boardManager = new BoardManager();
 		redrawBoard();
 
-		logger.finer("GameManager created");
+		if (LOGGING)
+			logger.finer("GameManager created");
 	}
 
 	/*
@@ -107,7 +110,8 @@ public abstract class GameManager extends JFrame implements GameListener {
 	@return a boolean representing whether or not the move was successful
 	 */
 	protected boolean interpretMove(Point from, Point to) {
-		logger.config("Entering interpretMove with " +
+		if (LOGGING)
+			logger.config("Entering interpretMove with " +
 				"from: " + from + " to: " + to);
 		try {
 			// determines whether or not the move is of the right color
@@ -134,17 +138,21 @@ public abstract class GameManager extends JFrame implements GameListener {
 
 		} catch (BoardIndexException e) {	// this type of exception should not be occuring
 			e.printStackTrace();
-			logger.warning("Detected BoardIndexException in GameManager interpretMove method.");
+			if (LOGGING)
+				logger.warning("Detected BoardIndexException in GameManager interpretMove method.");
 		} catch (InvalidMoveException e) {
 			gameGuiManager.setMoveResponse("That move is invalid. Try another.");
-			logger.config("Invalid move entered.");
+			if (LOGGING)
+				logger.config("Invalid move entered.");
 			return false;
 		} catch (IllegalMoveException e) {
 			gameGuiManager.setMoveResponse("That move is illegal. Try another.");
-			logger.config("Illegal move entered.");
+			if (LOGGING)
+				logger.config("Illegal move entered.");
 			return false;
 		}
-		logger.warning("Hit end of interpretMove method.");
+		if (LOGGING)
+			logger.warning("Hit end of interpretMove method.");
 		return false;	// should never hit this point
 	}
 
@@ -154,6 +162,7 @@ public abstract class GameManager extends JFrame implements GameListener {
 	menu.
 	 */
 	protected void handleGameOver() {
+		if (LOGGING)
 		logger.info("Game over has been detected.");
 		// handle starting a new game here
 		handleBoardUpdate();
@@ -169,7 +178,8 @@ public abstract class GameManager extends JFrame implements GameListener {
 	the x and y coordinate in the board
 	 */
 	public Point translateString(String str){
-		logger.config("Entering translateString");
+		if (LOGGING)
+			logger.config("Entering translateString");
 		if (str.length() < 2)
 			return null;
 		char xChar = str.charAt(0);

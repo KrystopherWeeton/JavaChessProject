@@ -28,7 +28,7 @@ public class GameManagerNoPlayer extends GameManager {
 
 		// Checks if we are in the possibility of an infinite repetition.
 		if (boardManager.inInfiniteGame()) {
-
+			handleGameOver();		// End the game
 		}
 		return returnValue;
 	}

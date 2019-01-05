@@ -24,6 +24,7 @@ public class MenuFrame extends HidingJFrame{
 	final private static Dimension DEFAULT_BUTTON_SIZE = new Dimension(100, 50);
 
 	final private static Logger logger = Logger.getLogger("Logger");
+	final private static boolean LOGGING = Consts.LOGGING;
 
 	final private static boolean pauseAtEndOfStressTesting = true;
 
@@ -34,7 +35,8 @@ public class MenuFrame extends HidingJFrame{
 
 		// creates self and sets layout
 		super("Chess Game");
-		logger.config("Creating new MenuFrame");
+		if (LOGGING)
+			logger.config("Creating new MenuFrame");
 
 		// initializes traits for JPanel
 		this.setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -79,7 +81,8 @@ public class MenuFrame extends HidingJFrame{
 	}
 
 	private void runStressTests(ActionEvent e) {
-		logger.config("Entering stress_test from the main menu.");
+		if (LOGGING)
+			logger.config("Entering stress_test from the main menu.");
 
 		// Gets user input for the number of tests to run
 		String numTests = JOptionPane.showInputDialog(this, "Enter the number of tests");
@@ -128,7 +131,8 @@ public class MenuFrame extends HidingJFrame{
 	Starts the game of chess. Is called when the play button is pressed
 	 */
 	private void handle_play(ActionEvent e) {
-		logger.config("Entering handle_play");
+		if (LOGGING)
+			logger.config("Entering handle_play");
 		String[] options = {"0", "1", "2"};
 		int players = JOptionPane.showOptionDialog(this,
 				"How many human players in your game?",
@@ -170,7 +174,8 @@ public class MenuFrame extends HidingJFrame{
 	Starts the process of loading a game. Is called when the load game button is pressed
 	 */
 	private void handle_load(ActionEvent e) {
-		logger.config("Entering handle_load");
+		if (LOGGING)
+			logger.config("Entering handle_load");
 		JOptionPane.showMessageDialog(this,
 				"This feature has not been implemented yet.");
 	}
