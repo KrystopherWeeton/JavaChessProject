@@ -22,4 +22,15 @@ public class GameManagerNoPlayer extends GameManager {
 				boardManager.getLightPoints(), boardManager.getDarkPoints());
 	}
 
+	@Override
+	public boolean interpretMove(Point from, Point to) {
+		boolean returnValue = super.interpretMove(from, to);
+
+		// Checks if we are in the possibility of an infinite repetition.
+		if (boardManager.inInfiniteGame()) {
+
+		}
+		return returnValue;
+	}
+
 }

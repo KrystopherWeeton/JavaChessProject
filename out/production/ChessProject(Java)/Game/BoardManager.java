@@ -240,6 +240,13 @@ public class BoardManager {
 		Piece movingPiece = at(from);
 		Piece deadPiece = at(to);
 
+		if (deadPiece != null && deadPiece.iden() == 'K') {
+			System.out.println("DEAD PIECE IS A KING");
+
+			isValidMove(from, to);
+			isLegalMove(from, to);
+		}
+
 		// clean the corpse for the dead one
 		if (deadPiece != null) {
 			if (deadPiece.getColor() == PieceColor.light)	// updates the point total
@@ -316,7 +323,6 @@ public class BoardManager {
 		switch (p.iden()) {		// to determine whether or not the move is valid given specific considerations
 			case 'K':	// must check whether it puts the king in check
 				boolean ret = kingCanTake(from, to);
-				logger.info("Checking if king can move, and returning " + ret);
 				return kingCanTake(from, to);
 			case 'Q':	// check diagonals and lines
 				isLegal = false;
@@ -624,9 +630,9 @@ public class BoardManager {
 		// checks for diagonal pawns
 		pawnPiece.reset(color);
 		if (color == PieceColor.light)
-			forwardDiagonals(location, pawnPiece);
-		else
 			backwardsDiagonals(location, pawnPiece);
+		else
+			forwardDiagonals(location, pawnPiece);
 		if (pawnPiece.foundPiece())
 			return true;
 
@@ -787,6 +793,14 @@ public class BoardManager {
 			return points;
 		}
 
+	}
+
+	/*
+	A function to determine whether or not the game is impossible to end.
+	 */
+	public boolean inInfiniteGame() {
+		// test for only kings left
+		return false;
 	}
 
 	/*
