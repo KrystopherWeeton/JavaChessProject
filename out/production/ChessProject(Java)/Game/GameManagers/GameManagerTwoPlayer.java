@@ -41,5 +41,10 @@ public class GameManagerTwoPlayer extends GameManager{
 				boardManager.getLightPoints(), boardManager.getDarkPoints());
 	}
 
+	@Override
+	public void promotePawn(Point at) {
+		boardManager.promotePawn(at);
+	}
+
 
 }

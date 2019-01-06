@@ -171,7 +171,8 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	}
 
 	public boolean selectSquare(Point p) {
-		logger.config("Selecting " + p);
+		if (LOGGING)
+			logger.config("Selecting " + p);
 		if (!BoardManager.isValid(p))
 			return false;
 		board[p.x][p.y].setBackground(SELECTED_COLOR);
@@ -179,7 +180,8 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 	}
 
 	public boolean deselectSquare(Point p) {
-		logger.config("Deselecting " + p);
+		if (LOGGING)
+			logger.config("Deselecting " + p);
 		if (!BoardManager.isValid(p))
 			return false;
 		board[p.x][p.y].setBackground(findColor(p.x, p.y));

@@ -76,6 +76,14 @@ public abstract class GameManager extends JFrame implements GameListener {
 	abstract public void redrawBoard();
 
 	/*
+	Handles user input and promotion of a pawn, if / when it happens
+	@at - the point where the pawn that is being promoted is
+	Note: There is a promotePawn function in boardManager that handles user promotion. Additionally,
+	there is an override versionw hich allows you to specify which piece to promote the pawn to.
+	 */
+	abstract public void promotePawn(Point at);
+
+	/*
 	-------------------------------
 	Base Functionality
 	-------------------------------
@@ -123,6 +131,7 @@ public abstract class GameManager extends JFrame implements GameListener {
 
 			// performs the move on the board
 			boolean gameOver = boardManager.performMove(from, to);
+			promotePawn(to);
 
 			// if we get here, then the move is definitely valid and the board (and ui) has been updated
 			if (gameOver) {

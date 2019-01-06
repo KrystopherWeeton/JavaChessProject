@@ -11,6 +11,8 @@ import java.util.logging.*;
 import Func.Function;
 import Func.Tuple;
 
+import javax.swing.*;
+
 /*
 Handles the logic of the game, and stores all values
  */
@@ -283,6 +285,7 @@ public class BoardManager {
 				darkPoints++;
 			setLocation(null, to.x, (movingPiece.colorMatches(PieceColor.light) ? (to.y - 1) : (to.y + 1) ));
 		}
+
 		if (LOGGING) {
 			logger.config("Light: " + getPieceList(PieceColor.light));
 			logger.config("Dark: " + getPieceList(PieceColor.dark));
@@ -290,6 +293,57 @@ public class BoardManager {
 
 		// checks if the game is over
 		return isGameOver(movingPiece.getColor());
+	}
+
+	private boolean promotingPawn(Point to) {
+		Piece p = at(to);
+		if (p == null || p.iden() != 'P') return false;
+		return (p.colorMatches(PieceColor.light) && to.y == 7) ||
+				(p.colorMatches(PieceColor.dark) && to.y == 0);
+	}
+
+	public void promotePawn(Point at) {
+		if (!promotingPawn(at)) return;
+		PieceColor color = at(at).getColor();
+
+		String[] options = new String[]{"Knight", "Queen"};
+		int response = JOptionPane.showOptionDialog(null,
+				"Promoting Pawn", "Pawn Promotion", JOptionPane.DEFAULT_OPTION,
+				JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+		int count = 0;
+		while (response == -1) {
+			count++;
+			if (count >= 6) {
+				response = 2;
+				JOptionPane.showMessageDialog(null, "Fine.");
+			} else {
+				response = JOptionPane.showOptionDialog(null,
+						"You must promote the pawn", "Pawn Promotion",
+						JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+						null, options, options[0]);
+			}
+		}
+
+		promotePawn(at, response);
+	}
+
+	public static final int KNIGHT_IDENTIFIER = 0;
+	public static final int QUEEN_IDENTIFIER = 1;
+
+	public void promotePawn(Point at, int identifier) {
+		if (!promotingPawn(at)) return;
+		PieceColor color = at(at).getColor();
+
+		Piece p = null;
+		switch (identifier) {
+			case 0:
+				p = new Knight(color, at.x, at.y);
+				break;
+			case 1:
+				p = new Queen(color, at.x, at.y);
+				break;
+		}
+		setLocation(p, at.x, at.y);
 	}
 
 	/*

@@ -33,4 +33,10 @@ public class GameManagerNoPlayer extends GameManager {
 		return returnValue;
 	}
 
+	@Override
+	public void promotePawn(Point at) {
+		int choice = MiscFunc.getRandom(0, 1);
+		boardManager.promotePawn(at, choice);
+	}
+
 }
