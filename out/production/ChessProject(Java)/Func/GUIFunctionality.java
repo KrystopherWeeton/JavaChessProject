@@ -40,7 +40,6 @@ public class GUIFunctionality {
 	Sends a warning pop up to the screen as a JDialogBox
 	 */
 	public static void sendWarning(String message, Component parent) {
-		// put this stuff here
 		JOptionPane.showMessageDialog(parent, message);
 	}
 }

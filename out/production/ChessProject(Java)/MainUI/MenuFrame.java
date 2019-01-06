@@ -26,7 +26,7 @@ public class MenuFrame extends HidingJFrame{
 	final private static Logger logger = Logger.getLogger("Logger");
 	final private static boolean LOGGING = Consts.LOGGING;
 
-	final private static boolean pauseAtEndOfStressTesting = true;
+	private static boolean pauseAtEndOfStressTesting = true;
 
 	/*
 	Constructs the menu frame and all sub-items
@@ -85,7 +85,16 @@ public class MenuFrame extends HidingJFrame{
 			logger.config("Entering stress_test from the main menu.");
 
 		// Gets user input for the number of tests to run
-		String numTests = JOptionPane.showInputDialog(this, "Enter the number of tests");
+		String numTests = JOptionPane.showInputDialog(this,
+				"Enter the number of tests");
+
+		int choice = JOptionPane.showConfirmDialog(this,
+				"Would you like to pause at the end of each game?");
+
+		if (choice == 2)
+			return;
+
+		pauseAtEndOfStressTesting = (choice == 1) ? false : true;
 
 		if (numTests == null) return;			// cancel was hit
 

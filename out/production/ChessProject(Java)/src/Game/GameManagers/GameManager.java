@@ -43,18 +43,25 @@ public abstract class GameManager extends JFrame implements GameListener {
 	-------------------------------
 	 */
 
-	public GameManager() {
+	public GameManager(boolean isVisible) {
 		super("Chess Game");
-		this.setSize(DEFAULT_SIZE);
-		this.setLocation(GUIFunctionality.getLocationToCenter(DEFAULT_SIZE));
 		gameGuiManager = new GameGuiManager(this);
-		this.setContentPane(gameGuiManager);
-		this.pack();
+		if (isVisible) {
+			this.setSize(DEFAULT_SIZE);
+			this.setLocation(GUIFunctionality.getLocationToCenter(DEFAULT_SIZE));
+			this.setContentPane(gameGuiManager);
+			this.pack();
+			redrawBoard();
+		} else
+			this.setContentPane(gameGuiManager);
 		boardManager = new BoardManager();
-		redrawBoard();
 
 		if (LOGGING)
 			logger.finer("GameManager created");
+	}
+
+	public GameManager() {
+		this(true);
 	}
 
 	/*
@@ -172,12 +179,20 @@ public abstract class GameManager extends JFrame implements GameListener {
 	 */
 	protected void handleGameOver() {
 		if (LOGGING)
-		logger.info("Game over has been detected.");
-		// handle starting a new game here
+			logger.info("Game over has been detected.");
 		handleBoardUpdate();
-		String result = (whitesTurn ? "White" : "Black") + " has won the game! Returning to the main menu.";
-		GUIFunctionality.sendWarning(result, this);
+		printGameOverMessage();
 		this.dispose();
+	}
+
+	protected void printGameOverMessage() {
+		PieceColor other = (whitesTurn ? PieceColor.dark : PieceColor.light);
+		String result = "";
+		if (!boardManager.kingInCheck(other))
+			result = "Tie.";
+		else
+			result = (whitesTurn ? "White" : "Black") + " has won the game! Returning to the main menu.";
+		GUIFunctionality.sendWarning(result, gameGuiManager.getWarningLabel());
 	}
 
 	/*

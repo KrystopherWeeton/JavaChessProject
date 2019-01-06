@@ -3,7 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="7a879e72-c1bb-4f0d-951b-06dda9dcecf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/BoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/BoardManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/Func/GUIFunctionality.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/Func/GUIFunctionality.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/Func/GUIFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/Func/GUIFunctionality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameTesterNoPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameTesterNoPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameTesterNoPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/Game/GameManagers/GameTesterNoPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/src/Game/GameManagers/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/src/Game/GameManagers/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessProject(Java)/src/Game/GameManagers/GameTesterNoPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessProject(Java)/src/Game/GameManagers/GameTesterNoPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Func/GUIFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Func/GUIFunctionality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameGuiManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameGuiManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameManagers/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManagers/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameManagers/GameTesterNoPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManagers/GameTesterNoPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainUI/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUI/MenuFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,10 +29,10 @@
     <session id="1764394495">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -29,7 +42,7 @@
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="7" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -37,14 +50,14 @@
           <entry key="Logging Overview" value="3" />
           <entry key="graphml" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="154" />
+          <entry key="java" value="164" />
           <entry key="properties" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="154" />
+          <entry key="JAVA" value="164" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="Properties" value="4" />
         </counts>
@@ -53,13 +66,13 @@
         <counts>
           <entry key="Logging Overview" value="480" />
           <entry key="dummy" value="20" />
-          <entry key="java" value="87708" />
+          <entry key="java" value="90680" />
           <entry key="properties" value="534" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="87708" />
+          <entry key="JAVA" value="90680" />
           <entry key="PLAIN_TEXT" value="500" />
           <entry key="Properties" value="534" />
         </counts>
@@ -71,84 +84,117 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/BoardManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="846">
-              <caret line="314" column="34" selection-start-line="314" selection-start-column="34" selection-end-line="314" selection-end-column="34" />
+            <state relative-caret-position="376">
+              <caret line="292" lean-forward="true" selection-start-line="292" selection-end-line="292" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1093">
+              <caret line="140" column="33" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="33" />
               <folding>
-                <element signature="e#1872#3296#0" />
-                <element signature="e#3397#3651#0" />
-                <element signature="e#4079#4204#0" />
-                <element signature="e#4207#4710#0" />
-                <element signature="e#4967#5384#0" />
-                <element signature="e#5387#5647#0" />
-                <element signature="e#5650#5907#0" />
-                <element signature="e#5910#6005#0" />
-                <element signature="e#6008#6295#0" />
-                <element signature="e#6298#6704#0" />
-                <element signature="e#8987#11515#0" />
-                <element signature="e#9396#9490#0" />
-                <element signature="e#9936#9993#0" />
-                <element signature="class#10180:10591" />
-                <element signature="method#run#0;class#10180:10591" />
-                <element signature="e#11518#12114#0" />
-                <element signature="e#12117#12850#0" />
-                <element signature="class#12742:12845" />
-                <element signature="e#12853#13595#0" />
-                <element signature="e#13342#13373#0" />
-                <element signature="e#13598#14300#0" />
-                <element signature="e#14304#15051#0" />
-                <element signature="class#14807:14912" />
-                <element signature="e#15054#15348#0" />
-                <element signature="e#15351#15910#0" />
-                <element signature="e#15913#17273#0" />
-                <element signature="class#16805:17011" />
-                <element signature="method#run#0;class#16805:17011" />
-                <element signature="e#17276#19020#0" />
-                <element signature="e#19941#19942#0" expanded="true" />
-                <element signature="e#19972#19973#0" expanded="true" />
-                <element signature="e#19314#21257#0" />
-                <element signature="e#21359#22110#0" />
-                <element signature="e#22202#23983#0" />
-                <element signature="e#22760#22943#0" />
-                <element signature="e#22947#23042#0" />
-                <element signature="e#23112#23210#0" />
-                <element signature="e#23214#23316#0" />
-                <element signature="e#23383#23838#0" />
-                <element signature="e#23842#23980#0" />
-                <element signature="e#23986#25017#0" />
-                <element signature="e#24314#24496#0" />
-                <element signature="e#24500#24937#0" />
-                <element signature="e#25020#25315#0" />
-                <element signature="e#25567#25740#0" />
-                <element signature="e#25743#25943#0" />
-                <element signature="e#25946#26557#0" />
-                <element signature="e#26492#26552#0" />
-                <element signature="e#26561#26763#0" />
-                <element signature="e#26698#26758#0" />
-                <element signature="e#26766#26969#0" />
-                <element signature="e#26904#26964#0" />
-                <element signature="e#26973#27180#0" />
-                <element signature="e#27115#27175#0" />
-                <element signature="e#27183#27410#0" />
-                <element signature="e#27341#27405#0" />
-                <element signature="e#27414#27643#0" />
-                <element signature="e#27574#27638#0" />
-                <element signature="e#27646#27886#0" />
-                <element signature="e#27817#27881#0" />
-                <element signature="e#27889#28130#0" />
-                <element signature="e#28061#28125#0" />
-                <element signature="e#28133#28296#0" />
-                <element signature="e#28299#28887#0" />
-                <element signature="e#28890#29313#0" />
-                <element signature="e#29316#29790#0" />
-                <element signature="e#29793#30287#0" />
-                <element signature="e#30290#30561#0" />
-                <element signature="e#30564#30839#0" />
-                <element signature="e#30842#31115#0" />
-                <element signature="e#31118#31391#0" />
+                <element signature="method#translateString#0;class#GameManager#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/GameGuiManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="98" column="49" lean-forward="true" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
+              <folding>
+                <element signature="e#4221#4222#0" expanded="true" />
+                <element signature="e#4246#4247#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Func/GUIFunctionality.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="814">
+              <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+              <folding>
+                <element signature="e#1058#1059#0" expanded="true" />
+                <element signature="e#1112#1113#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameTesterNoPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+              <folding>
+                <element signature="e#278#279#0" expanded="true" />
+                <element signature="e#331#332#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerNoPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainUI/MenuFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="91" column="36" lean-forward="true" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4932#4933#0" expanded="true" />
+                <element signature="e#4960#4961#0" expanded="true" />
+                <element signature="e#5015#5016#0" expanded="true" />
+                <element signature="e#5043#5044#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerOnePlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Func/Consts.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/BoardGuiManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -166,13 +212,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CONFIG</find>
-      <find>Config</find>
-      <find>All possible moves are</find>
-      <find>The</find>
-      <find>Checking</find>
-      <find>findAllM</find>
-      <find>setLocation</find>
       <find>deadPiece</find>
       <find>putsKingInCheck</find>
       <find>isEnPassant</find>
@@ -190,12 +229,19 @@
       <find>kingInCheck</find>
       <find>canBeTaken</find>
       <find>Entering isValidMove</find>
-      <find>performMove</find>
-      <find>redrawBoard</find>
       <find>g</find>
       <find>generateUI</find>
       <find>logger</find>
       <find>inInfiniteGame</find>
+      <find>selecting</find>
+      <find>performMove</find>
+      <find>listener</find>
+      <find>GameLIstener</find>
+      <find>interpretMove</find>
+      <find>handleGameOver</find>
+      <find>pauseAtEnd</find>
+      <find>redrawBoard</find>
+      <find>handleBoardUpdate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -215,7 +261,6 @@
         <option value="$PROJECT_DIR$/src/Game/Pieces/PieceColor.java" />
         <option value="$PROJECT_DIR$/src/Game/GridButton.java" />
         <option value="$PROJECT_DIR$/src/Game/GameListener.java" />
-        <option value="$PROJECT_DIR$/src/Func/GUIFunctionality.java" />
         <option value="$PROJECT_DIR$/src/Func/Function.java" />
         <option value="$PROJECT_DIR$/src/Game/Pieces/Knight.java" />
         <option value="$PROJECT_DIR$/src/Game/Pieces/Rook.java" />
@@ -229,8 +274,6 @@
         <option value="$PROJECT_DIR$/src/Game/Exceptions/IllegalMoveException.java" />
         <option value="$PROJECT_DIR$/src/Game/Players/God.java" />
         <option value="$PROJECT_DIR$/src/Game/Players/Player.java" />
-        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManagerOnePlayer.java" />
-        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManagerTwoPlayer.java" />
         <option value="$PROJECT_DIR$/Logging Overview" />
         <option value="$PROJECT_DIR$/Logging/logging.properties" />
         <option value="$PROJECT_DIR$/Logging/Logging Overview" />
@@ -240,19 +283,22 @@
         <option value="$PROJECT_DIR$/src/Game/Pieces/Pawn.java" />
         <option value="$PROJECT_DIR$/src/Game/Pieces/Queen.java" />
         <option value="$PROJECT_DIR$/src/Func/MiscFunc.java" />
-        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManagerNoPlayer.java" />
         <option value="$PROJECT_DIR$/logging.properties" />
         <option value="$PROJECT_DIR$/src/MainUI/Main.java" />
         <option value="$PROJECT_DIR$/src/Constants.java" />
         <option value="$PROJECT_DIR$/src/Consts.java" />
-        <option value="$PROJECT_DIR$/src/Game/GameGuiManager.java" />
-        <option value="$PROJECT_DIR$/src/MainUI/MenuFrame.java" />
         <option value="$PROJECT_DIR$/src/Game/Pieces/Piece.java" />
-        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameTesterNoPlayer.java" />
-        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManager.java" />
-        <option value="$PROJECT_DIR$/src/Game/BoardGuiManager.java" />
         <option value="$PROJECT_DIR$/src/Func/Consts.java" />
+        <option value="$PROJECT_DIR$/src/Game/BoardGuiManager.java" />
         <option value="$PROJECT_DIR$/src/Game/BoardManager.java" />
+        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManagerTwoPlayer.java" />
+        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManagerOnePlayer.java" />
+        <option value="$PROJECT_DIR$/src/Func/GUIFunctionality.java" />
+        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/Game/GameGuiManager.java" />
+        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameManagerNoPlayer.java" />
+        <option value="$PROJECT_DIR$/src/MainUI/MenuFrame.java" />
+        <option value="$PROJECT_DIR$/src/Game/GameManagers/GameTesterNoPlayer.java" />
       </list>
     </option>
   </component>
@@ -268,8 +314,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -352,13 +396,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546745120653" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Krystopher_Weeton/Dropbox/Workspaces/ChessProject(Java)/src/Game/GameManagers/GameManagerNoPlayer.java" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546746536549" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -461,7 +508,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="23" width="1080" height="1897" extended-state="6" />
+    <frame x="1920" y="23" width="1080" height="1897" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" x="1666" y="23" width="254" height="1177" id="Project" order="0" type="FLOATING" visible="true" weight="0.24470136" />
@@ -473,7 +520,7 @@
       <window_info id="Favorites" order="6" side_tool="true" weight="0.32851636" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5483871" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32963988" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32963988" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.15623268" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -534,29 +581,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerOnePlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="64" lean-forward="true" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ChessProject(Java).iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerTwoPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Func/GUIFunctionality.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Func/WrapLayout.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -705,57 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainUI/MenuFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameTesterNoPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/GameGuiManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3762">
-          <caret line="180" column="18" selection-start-line="180" selection-start-column="12" selection-end-line="180" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/BoardGuiManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
-          <caret line="135" column="33" lean-forward="true" selection-start-line="135" selection-start-column="33" selection-end-line="135" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="56" column="18" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="18" />
-          <folding>
-            <element signature="e#2120#2121#0" expanded="true" />
-            <element signature="e#2140#2141#0" expanded="true" />
-            <element signature="method#handleGameOver#0;class#GameManager#0" />
-            <element signature="method#translateString#0;class#GameManager#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Func/Consts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainUI/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -780,89 +755,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerNoPlayer.java">
+    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerTwoPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        <state relative-caret-position="968">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="e#1565#1566#0" expanded="true" />
+            <element signature="e#1600#1601#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerOnePlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Func/Consts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/BoardGuiManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/BoardManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="314" column="34" selection-start-line="314" selection-start-column="34" selection-end-line="314" selection-end-column="34" />
+        <state relative-caret-position="376">
+          <caret line="292" lean-forward="true" selection-start-line="292" selection-end-line="292" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/GameGuiManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="98" column="49" lean-forward="true" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
           <folding>
-            <element signature="e#1872#3296#0" />
-            <element signature="e#3397#3651#0" />
-            <element signature="e#4079#4204#0" />
-            <element signature="e#4207#4710#0" />
-            <element signature="e#4967#5384#0" />
-            <element signature="e#5387#5647#0" />
-            <element signature="e#5650#5907#0" />
-            <element signature="e#5910#6005#0" />
-            <element signature="e#6008#6295#0" />
-            <element signature="e#6298#6704#0" />
-            <element signature="e#8987#11515#0" />
-            <element signature="e#9396#9490#0" />
-            <element signature="e#9936#9993#0" />
-            <element signature="class#10180:10591" />
-            <element signature="method#run#0;class#10180:10591" />
-            <element signature="e#11518#12114#0" />
-            <element signature="e#12117#12850#0" />
-            <element signature="class#12742:12845" />
-            <element signature="e#12853#13595#0" />
-            <element signature="e#13342#13373#0" />
-            <element signature="e#13598#14300#0" />
-            <element signature="e#14304#15051#0" />
-            <element signature="class#14807:14912" />
-            <element signature="e#15054#15348#0" />
-            <element signature="e#15351#15910#0" />
-            <element signature="e#15913#17273#0" />
-            <element signature="class#16805:17011" />
-            <element signature="method#run#0;class#16805:17011" />
-            <element signature="e#17276#19020#0" />
-            <element signature="e#19941#19942#0" expanded="true" />
-            <element signature="e#19972#19973#0" expanded="true" />
-            <element signature="e#19314#21257#0" />
-            <element signature="e#21359#22110#0" />
-            <element signature="e#22202#23983#0" />
-            <element signature="e#22760#22943#0" />
-            <element signature="e#22947#23042#0" />
-            <element signature="e#23112#23210#0" />
-            <element signature="e#23214#23316#0" />
-            <element signature="e#23383#23838#0" />
-            <element signature="e#23842#23980#0" />
-            <element signature="e#23986#25017#0" />
-            <element signature="e#24314#24496#0" />
-            <element signature="e#24500#24937#0" />
-            <element signature="e#25020#25315#0" />
-            <element signature="e#25567#25740#0" />
-            <element signature="e#25743#25943#0" />
-            <element signature="e#25946#26557#0" />
-            <element signature="e#26492#26552#0" />
-            <element signature="e#26561#26763#0" />
-            <element signature="e#26698#26758#0" />
-            <element signature="e#26766#26969#0" />
-            <element signature="e#26904#26964#0" />
-            <element signature="e#26973#27180#0" />
-            <element signature="e#27115#27175#0" />
-            <element signature="e#27183#27410#0" />
-            <element signature="e#27341#27405#0" />
-            <element signature="e#27414#27643#0" />
-            <element signature="e#27574#27638#0" />
-            <element signature="e#27646#27886#0" />
-            <element signature="e#27817#27881#0" />
-            <element signature="e#27889#28130#0" />
-            <element signature="e#28061#28125#0" />
-            <element signature="e#28133#28296#0" />
-            <element signature="e#28299#28887#0" />
-            <element signature="e#28890#29313#0" />
-            <element signature="e#29316#29790#0" />
-            <element signature="e#29793#30287#0" />
-            <element signature="e#30290#30561#0" />
-            <element signature="e#30564#30839#0" />
-            <element signature="e#30842#31115#0" />
-            <element signature="e#31118#31391#0" />
+            <element signature="e#4221#4222#0" expanded="true" />
+            <element signature="e#4246#4247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Func/GUIFunctionality.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+          <folding>
+            <element signature="e#1058#1059#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainUI/MenuFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="91" column="36" lean-forward="true" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4932#4933#0" expanded="true" />
+            <element signature="e#4960#4961#0" expanded="true" />
+            <element signature="e#5015#5016#0" expanded="true" />
+            <element signature="e#5043#5044#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManagerNoPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1093">
+          <caret line="140" column="33" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="33" />
+          <folding>
+            <element signature="method#translateString#0;class#GameManager#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/GameManagers/GameTesterNoPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+          <folding>
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -35,6 +35,8 @@ public class GameGuiManager extends JPanel{
 	private JButton beginning = new JButton("Beginning");
 	private JButton end = new JButton("Current Board");
 
+	private JLabel warningLabel = new JLabel();
+
 	// Spring layout to handle UI
 	private SpringLayout layout = new SpringLayout();
 
@@ -77,6 +79,7 @@ public class GameGuiManager extends JPanel{
 		this.add(stepBackwards);
 		this.add(beginning);
 		this.add(end);
+		this.add(warningLabel);
 
 		// set constraints of components
 
@@ -110,6 +113,10 @@ public class GameGuiManager extends JPanel{
 		layout.putConstraint(NORTH, end, 5, SOUTH, stepForward);
 		layout.putConstraint(WEST, end, 0, WEST, beginning);
 
+		// put the warningPanel below the board
+		layout.putConstraint(NORTH, warningLabel, 100, SOUTH, boardGuiManager);
+		layout.putConstraint(WEST, warningLabel, boardGuiManager.getWidth() / 2, WEST, this);
+
 		// set everything to visible
 		lowerPoints.setVisible(true);
 		upperPoints.setVisible(true);
@@ -118,6 +125,7 @@ public class GameGuiManager extends JPanel{
 		stepBackwards.setVisible(true);
 		beginning.setVisible(true);
 		end.setVisible(true);
+		warningLabel.setVisible(true);
 		this.setVisible(true);
 
 	}
@@ -127,6 +135,10 @@ public class GameGuiManager extends JPanel{
 	Modifiers / Updaters
 	----------------------------
 	 */
+
+	public JComponent getWarningLabel() {
+		return warningLabel;
+	}
 
 	/*
 	Sets the moveResponse label to reflect the text passed in

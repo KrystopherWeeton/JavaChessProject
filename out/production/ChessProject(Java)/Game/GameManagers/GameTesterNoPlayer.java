@@ -11,7 +11,12 @@ public class GameTesterNoPlayer extends GameManagerNoPlayer {
 	private final boolean displayFinalResults;
 
 	public GameTesterNoPlayer(boolean displayFinalResults) {
+		super(displayFinalResults);
 		this.displayFinalResults = displayFinalResults;
+		if (!displayFinalResults) {
+			this.setVisible(false);
+			gameGuiManager.setVisible(false);
+		}
 	}
 
 
@@ -19,11 +24,15 @@ public class GameTesterNoPlayer extends GameManagerNoPlayer {
 	protected void handleGameOver() {
 
 		if (displayFinalResults) {
-			handleBoardUpdate();
-			String result = (isWhitesTurn() ? "White" : "Black") + " has won the game! Returning to the main menu.";
-			GUIFunctionality.sendWarning(result, this);
+			printGameOverMessage();
 		}
 
 		this.dispose();
+	}
+
+	@Override
+	protected void handleBoardUpdate() {
+		if (displayFinalResults)
+			super.handleBoardUpdate();
 	}
 }

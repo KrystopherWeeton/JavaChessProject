@@ -9,6 +9,14 @@ public class GameManagerNoPlayer extends GameManager {
 
 	Player p1 = new God();
 
+	public GameManagerNoPlayer(boolean isVisible) {
+		super(isVisible);
+	}
+
+	public GameManagerNoPlayer() {
+		this(true);
+	}
+
 	@Override
 	public void actionPerformed(String actionCode) {
 		PieceColor color = color(isWhitesTurn());
