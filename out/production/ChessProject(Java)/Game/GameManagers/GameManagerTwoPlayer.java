@@ -8,7 +8,7 @@ public class GameManagerTwoPlayer extends GameManager{
 	protected Point selectedDisplayPoint = null;
 
 	public GameManagerTwoPlayer() {
-
+		super(true);
 	}
 
 	/*

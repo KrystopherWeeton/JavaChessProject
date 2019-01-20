@@ -21,10 +21,10 @@ public class GameTesterNoPlayer extends GameManagerNoPlayer {
 
 
 	@Override
-	protected void handleGameOver() {
+	protected void handleGameOver(boolean isDraw) {
 
 		if (displayFinalResults) {
-			printGameOverMessage();
+			printGameOverMessage(isDraw);
 		}
 
 		this.dispose();

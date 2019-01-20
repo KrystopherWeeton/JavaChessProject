@@ -64,6 +64,10 @@ public class BoardGuiManager extends JPanel implements ActionListener{
 		newLocation.repaint();
 	}
 
+	public void offerDraw(){
+		inputListener.drawOffered();
+	}
+
 	public void redrawBoard(Piece[][] board, boolean whitesTurn) {
 		if (LOGGING)
 			logger.config("Entering redrawBoard");

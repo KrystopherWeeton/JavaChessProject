@@ -8,4 +8,6 @@ public interface GameListener {
 
 	abstract void actionPerformed(String actionCode);
 
+	abstract void drawOffered();
+
 }

@@ -46,6 +46,7 @@ public abstract class GameManager extends JFrame implements GameListener {
 	public GameManager(boolean isVisible) {
 		super("Chess Game");
 		gameGuiManager = new GameGuiManager(this);
+		boardManager = new BoardManager();
 		if (isVisible) {
 			this.setSize(DEFAULT_SIZE);
 			this.setLocation(GUIFunctionality.getLocationToCenter(DEFAULT_SIZE));
@@ -54,7 +55,6 @@ public abstract class GameManager extends JFrame implements GameListener {
 			redrawBoard();
 		} else
 			this.setContentPane(gameGuiManager);
-		boardManager = new BoardManager();
 
 		if (LOGGING)
 			logger.finer("GameManager created");
@@ -86,7 +86,7 @@ public abstract class GameManager extends JFrame implements GameListener {
 	Handles user input and promotion of a pawn, if / when it happens
 	@at - the point where the pawn that is being promoted is
 	Note: There is a promotePawn function in boardManager that handles user promotion. Additionally,
-	there is an override versionw hich allows you to specify which piece to promote the pawn to.
+	there is an override version which allows you to specify which piece to promote the pawn to.
 	 */
 	abstract public void promotePawn(Point at);
 
@@ -96,6 +96,21 @@ public abstract class GameManager extends JFrame implements GameListener {
 	-------------------------------
 	 */
 
+	/*
+		Called when a draw is offered
+		 */
+	@Override
+	public void drawOffered() {
+
+		// create JOptionPane for the other user to consider
+		String[] options = {"Accept", "Reject"};
+		String message = ( (whitesTurn) ? "White" : "Black" ) + " has offered a draw.";
+		int choice = JOptionPane.showOptionDialog(this, message, "Draw Offered",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+		if (choice == 0) {
+			handleGameOver(true);
+		}
+	}
 
 	/*
 	Made to allow for base functionality when redrawing the board, before the abstract method is called
@@ -142,7 +157,7 @@ public abstract class GameManager extends JFrame implements GameListener {
 
 			// if we get here, then the move is definitely valid and the board (and ui) has been updated
 			if (gameOver) {
-				handleGameOver();
+				handleGameOver(false);
 			} else {	// switch turns and redraw the board
 				whitesTurn = !whitesTurn;
 				handleBoardUpdate();
@@ -177,18 +192,18 @@ public abstract class GameManager extends JFrame implements GameListener {
 	however, a default behaviour is specified which tells the user that the game is over and then returns to the main
 	menu.
 	 */
-	protected void handleGameOver() {
+	protected void handleGameOver(boolean draw) {
 		if (LOGGING)
 			logger.info("Game over has been detected.");
 		handleBoardUpdate();
-		printGameOverMessage();
+		printGameOverMessage(draw);
 		this.dispose();
 	}
 
-	protected void printGameOverMessage() {
+	protected void printGameOverMessage(boolean isDraw) {
 		PieceColor other = (whitesTurn ? PieceColor.dark : PieceColor.light);
 		String result = "";
-		if (!boardManager.kingInCheck(other))
+		if (!boardManager.kingInCheck(other) || isDraw)
 			result = "Tie.";
 		else
 			result = (whitesTurn ? "White" : "Black") + " has won the game! Returning to the main menu.";

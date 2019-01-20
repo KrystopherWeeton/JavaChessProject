@@ -3,6 +3,8 @@ package Game;
 import javax.swing.*;
 import java.awt.*;
 import java.util.logging.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import Func.*;
 import Game.Pieces.Piece;
@@ -11,7 +13,7 @@ import Game.Pieces.Piece;
 A class which manages the gui for the game (includes outside
 buttons etc.)
  */
-public class GameGuiManager extends JPanel{
+public class GameGuiManager extends JPanel implements ActionListener{
 
 	/*
 	-------------------
@@ -34,6 +36,7 @@ public class GameGuiManager extends JPanel{
 	private JButton stepBackwards = new JButton("Back");
 	private JButton beginning = new JButton("Beginning");
 	private JButton end = new JButton("Current Board");
+	private JButton draw = new JButton("Offer Draw");
 
 	private JLabel warningLabel = new JLabel();
 
@@ -80,6 +83,21 @@ public class GameGuiManager extends JPanel{
 		this.add(beginning);
 		this.add(end);
 		this.add(warningLabel);
+		this.add(draw);
+
+		stepForward.setActionCommand("stepForward");
+		stepBackwards.setActionCommand("stepBackward");
+		beginning.setActionCommand("beginning");
+		end.setActionCommand("end");
+		draw.setActionCommand("draw");
+
+		stepForward.addActionListener(this);
+		stepBackwards.addActionListener(this);
+		beginning.addActionListener(this);
+		end.addActionListener(this);
+		draw.addActionListener(this);
+
+
 
 		// set constraints of components
 
@@ -98,6 +116,10 @@ public class GameGuiManager extends JPanel{
 		// put the lowerPoints into location
 		layout.putConstraint(SOUTH, lowerPoints, -10, SOUTH, boardGuiManager);
 		layout.putConstraint(WEST, lowerPoints, 5, EAST, boardGuiManager);
+
+		// put the draw button into location
+		layout.putConstraint(SOUTH, draw, 0, SOUTH, lowerPoints);
+		layout.putConstraint(WEST, draw, 10, EAST, lowerPoints);
 
 		// put the top of the buttons into position
 		layout.putConstraint(NORTH, beginning, 10, NORTH, this);
@@ -123,6 +145,7 @@ public class GameGuiManager extends JPanel{
 		moveResponse.setVisible(true);
 		stepForward.setVisible(true);
 		stepBackwards.setVisible(true);
+		draw.setVisible(true);
 		beginning.setVisible(true);
 		end.setVisible(true);
 		warningLabel.setVisible(true);
@@ -212,6 +235,14 @@ public class GameGuiManager extends JPanel{
 	 */
 	public boolean deselectSquare(Point p) {
 		return boardGuiManager.deselectSquare(p);
+	}
+
+	public void actionPerformed(ActionEvent evt) {
+		switch (evt.getActionCommand()) {
+			case "draw":
+				boardGuiManager.offerDraw();
+				break;
+		}
 	}
 
 }
