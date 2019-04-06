@@ -7,7 +7,7 @@ import java.awt.Point;
 
 public class GameManagerNoPlayer extends GameManager {
 
-	Player p1 = new God();
+	Player p1 = new God(0.15, 0.15, 0.7);
 
 	public GameManagerNoPlayer(boolean isVisible) {
 		super(isVisible);

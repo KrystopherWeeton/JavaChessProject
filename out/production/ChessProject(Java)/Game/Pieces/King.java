@@ -8,7 +8,7 @@ The King piece
 public class King extends Piece {
 
 	public King(PieceColor color, int x, int y) {
-		super("King", x, y, color, 10);
+		super("King", x, y, color, 6);
 	}
 
 	@Override

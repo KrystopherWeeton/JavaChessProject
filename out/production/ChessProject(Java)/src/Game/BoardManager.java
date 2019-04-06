@@ -14,7 +14,8 @@ import Func.Tuple;
 import javax.swing.*;
 
 /*
-Handles the logic of the game, and stores all values
+(a) Maintains the state of the board
+(b) Handles logic of moving pieces
  */
 public class BoardManager {
 
@@ -58,6 +59,9 @@ public class BoardManager {
 	private King lightKing;
 	private King darkKing;
 
+	private static final int totalPoints = 45;
+
+	// logging fields
 	private static final Logger logger = Logger.getLogger("BoardManager");
 	private static final boolean LOGGING = Consts.LOGGING;
 
@@ -117,6 +121,12 @@ public class BoardManager {
 	----------------------------
 	 */
 
+	/*
+	Returns a list of the pieces in the form a string separated by " "
+	@parameters:
+		color: the color of the piece to get the list of
+	@return: A string holding the piece identifiers separated by " "
+	 */
 	public String getPieceList(PieceColor color) {
 		StringBuilder sb = new StringBuilder();
 		for (int x = 0; x < 8; x++) {
@@ -128,20 +138,42 @@ public class BoardManager {
 		return sb.toString();
 	}
 
-	// Accessor for lightPoints
+	/*
+	Returns the number of points the light color has
+	 */
 	public int getLightPoints() {
 		return lightPoints;
 	}
 
-	// Accessor for darkPoints
+	/*
+	Returns the number of points the light color has
+	 */
 	public int getDarkPoints() {
 		return darkPoints;
 	}
 
+	public int remainingLightPoints() {
+		return totalPoints - getDarkPoints();
+	}
+
+	public int remainingDarkPoints() {
+		return totalPoints - getLightPoints();
+	}
+
+	public ConstPiece getPiece(int x, int y) {
+		Piece p = at(x, y);
+		return ( p == null) ? null : new ConstPiece(p);
+	}
+
+	public ConstPiece getPiece(Point p) {
+		return getPiece(p.x, p.y);
+	}
+
 	/*
 	Determines if a given point is valid
-	@param p - the point to check
-	@return true if the point lies on the board and false otherwise
+	@parameters:
+		p: The point to check
+	@return: true if the point lies on the board, and false otherwise
 	 */
 	public static boolean isValid(Point p) {
 		return !(p == null || p.x < 0 || p.x > 7 || p.y < 0 || p.y > 7);
@@ -153,8 +185,9 @@ public class BoardManager {
 	/*
 	Moves the piece to the given coordinates, setting old position to null. If null is passed, sets location
 	to null.
-	@param p - the piece to be set
-	@param x,y - the location for the piece to go
+	@parameters:
+		p: The piece to move
+		(x, y): The point to move the piece to
 	 */
 	private void setLocation(Piece p, int x, int y) {
 		if (p != null) {
@@ -496,6 +529,22 @@ public class BoardManager {
 	}
 
 
+	public boolean canMove(Point from, Point to) {
+		if (!isValid(from) || !isValid(to)) return false;
+
+		Piece p = at(from);
+		if (p == null) return false;
+
+		boolean valid = isValidMove(from, to);
+		if (!valid) return false;
+		boolean legal = isLegalMove(from, to);
+		if (!legal) return false;
+		if (p.iden() == 'K') {
+			return kingCanTake(from, to);
+		}
+		return true;
+	}
+
 	/*
 	Checks whether the king can make the move specified
 	@param origLocation - the original location of the king (which must contain a king)
@@ -591,6 +640,23 @@ public class BoardManager {
 
 		}
 		return list;
+	}
+
+	/*
+	Counts the number of pieces being currently threatened by the color passed in
+	@parameters:
+		color: the piece color doing the threatening
+	@return: An ArrayList of points for the pieces currently being threatened
+	 */
+	public ArrayList<Tuple<Point, Point>> determineThreats(PieceColor color) {
+
+		ArrayList<Tuple<Point, Point>> moves = findAllMoves(color);
+		ArrayList<Tuple<Point, Point>> takes = new ArrayList<Tuple<Point, Point>>(moves.size());
+		for (Tuple<Point, Point> t : moves) {
+			Piece p = at(t.y);
+			if (p != null && !p.colorMatches(color)) takes.add(t);
+		}
+		return takes;
 	}
 
 	/*
